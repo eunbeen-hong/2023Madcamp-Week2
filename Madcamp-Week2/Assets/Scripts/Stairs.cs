@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Stairs : MonoBehaviour
 {
-    public GameObject[] player, stairs;
+    public GameObject player, leftbutton, rightbutton;
+    public GameObject[] stairs;
 
     // right: true / left: false
     public bool[] isRight = new bool[20];
 
     Vector3 startPos = new Vector3(0, -4.5f, 0);
-    float width = 1.0f;
-    float height = 0.5f;
-    Vector3 dleft = new Vector3(-0.0001f, 0.00005f, 0);
-    Vector3 dright = new Vector3(0.0001f, 0.00005f, 0);
+    // float width = 1.0f;
+    // float height = 0.5f;
+    Vector3 dleft = new Vector3(-1f, 0.5f, 0);
+    Vector3 dright = new Vector3(1f, 0.5f, 0);
     
 
     // Vector3 widthoffset = new Vector3(1.0f, 0, 0);
@@ -103,9 +104,6 @@ public class Stairs : MonoBehaviour
             if (stairs[i].transform.position.y < -5) StairSpawn(i);
         }
 
-
-        
-
     }
 
 
@@ -132,13 +130,6 @@ public class Stairs : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        for (int i = 0; i < 1000; i++) {
-            StairMove(i%20, true);
-            Invoke("delay", 1.0f);
-        }
-    }
-
-    void delay() {
-
+        
     }
 }
