@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SliderTimer : MonoBehaviour
 {
     Slider slTimer;
-    float fSliderBarTime;
+    float fSliderBarTime, timerSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class SliderTimer : MonoBehaviour
     void Update()
     {
         if (slTimer.value > 0.0f) {
-            slTimer.value -= Time.deltaTime;
+            slTimer.value -= Time.deltaTime * timerSpeed;
         } else {
             Debug.Log("Time Over");
         }
