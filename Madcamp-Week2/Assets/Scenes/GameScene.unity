@@ -954,7 +954,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1438375023}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: BtnDown
+        m_MethodName: OnClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 543019351}
@@ -1641,7 +1641,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1438375023}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: BtnDown
+        m_MethodName: OnClick
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 829471646}
@@ -2534,21 +2534,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1438375022
-Transform:
+--- !u!224 &1438375022
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438375021}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -395.27893, y: -672.40546, z: 353775.06}
+  m_LocalPosition: {x: 0, y: 0, z: 353775.06}
   m_LocalScale: {x: 160.04813, y: 160.04813, z: 160.04813}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 354684095}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -395.27893, y: -672.40546}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1438375023
 MonoBehaviour:
   m_ObjectHideFlags: 0
