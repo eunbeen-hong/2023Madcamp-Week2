@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] stairs;
-    public GameObject LeftButton, RightButton;
     int score;
 
     void Awake() {
