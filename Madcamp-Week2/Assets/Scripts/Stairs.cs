@@ -13,8 +13,8 @@ public class Stairs : MonoBehaviour
     Vector3 startPos = new Vector3(0, -4.5f, 0);
     // float width = 1.0f;
     // float height = 0.5f;
-    Vector3 dleft = new Vector3(-1f, 0.5f, 0);
-    Vector3 dright = new Vector3(1f, 0.5f, 0);
+    Vector3 dleft = new Vector3(-1.1f, 0.6f, 0);
+    Vector3 dright = new Vector3(1.1f, 0.6f, 0);
     
 
     // Vector3 widthoffset = new Vector3(1.0f, 0, 0);
@@ -58,6 +58,8 @@ public class Stairs : MonoBehaviour
                     state = State.leftDir;
                     isRight[i] = false;
                 }
+            } else {
+                isRight[i] = state2bool(state);
             }
         }
     }
@@ -65,7 +67,7 @@ public class Stairs : MonoBehaviour
     // 해당 번호 stair를 삭제 -> 재생성
     private void StairSpawn(int num) {
         // 생성할 방향을 일단 현재 상태로 하고
-        isRight[(num + 1) % 20] = state2bool(state);
+        isRight[(num) % 20] = state2bool(state);
         beforePos = stairs[num == 0 ? 19 : num - 1].transform.position;
 
         switch(state) {
