@@ -27,6 +27,7 @@ public class Stairs : MonoBehaviour
     // Start is called before the first frame update
     void Awake() {
         StairInit();
+        player = gameObject;
     }
 
     void StairInit() {
@@ -48,7 +49,7 @@ public class Stairs : MonoBehaviour
             beforePos = stairs[i].transform.position;
 
             // 1/3 확률로 방향 전환
-            if (Random.Range(1, 9) < 3 && 0 < i && i < 19) {
+            if (Random.Range(1, 9) < 3 && 0 < i && i < 19) { // 왜 0, 19번째는 방향 전환 안함?
                 if (state == State.leftDir) {
                     state = State.rightDir;
                     isRight[i] = true;
@@ -62,9 +63,9 @@ public class Stairs : MonoBehaviour
     }
 
     // 해당 번호 stair를 삭제 -> 재생성
-    void StairSpawn(int num) {
+    private void StairSpawn(int num) {
         // 생성할 방향을 일단 현재 상태로 하고
-        isRight[num == 19 ? 0 : num + 1] = state2bool(state);
+        isRight[(num + 1) % 20] = state2bool(state);
         beforePos = stairs[num == 0 ? 19 : num - 1].transform.position;
 
         switch(state) {
@@ -90,8 +91,9 @@ public class Stairs : MonoBehaviour
 
     }
 
-    void StairMove(bool stepRight) { // 플레이어가 오른쪽으로 움직임 -> stepRight = true
+    public void StairMove(bool stepRight) { // 플레이어가 오른쪽으로 움직임 -> stepRight = true
         // if (player.isDead) return;
+        Debug.Log("StairMove called isStepRight: " + stepRight.ToString());
 
         // Move stairs to the right or left
         Vector3 offset = stepRight ? (-dright) : (-dleft);

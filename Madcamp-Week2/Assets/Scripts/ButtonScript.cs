@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    // GameObject leftButton, rightButton;
+    Player player;
 
     private void Awake() {
+        player = GameObject.Find("player1").GetComponent<Player>();
+        Debug.Log(player);
     }
 
     private void Start() {
@@ -17,10 +19,10 @@ public class ButtonScript : MonoBehaviour
     {
         if (btn.name == "LeftButton") {
             Debug.Log("LeftButton clicked");
-            // player.Step(false);
+            player.Step(false);
         } else if (btn.name == "RightButton") {
             Debug.Log("RightButton clicked");
-            // player.Step(true);
+            player.Step(true);
         }
     }
 }
