@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
 {
     
     public GameObject[] players, stairs, UI;
-    public GameObject pauseButton, ResumeButton, NewGameButton;
+    public GameObject LeftButton, RightButton;
+    public GameObject pauseButton, ResumeButton, RestartButton;
     public GameObject background;
     
+    public Animator anim;
     public Image timer;
     public TMP_Text finalScoreText, bestScoreText, currentScoreText;
     public Player player;
@@ -19,14 +21,15 @@ public class GameManager : MonoBehaviour
 
     public bool timerOn = false, gamePaused = false;
     float timerSpeed = 0.0025f;
-    int score, selectedIndex = 0;
+    int score;
+    // int selectedIndex = 0;
 
 
     public bool[] isRight = new bool[20];
     Vector3 prevStairPos;
     Vector3 startPos = new Vector3(0, -4.5f, 0);
-    Vector3 dleft = new Vector3(-1.2f, 0.7f, 0);
-    Vector3 dright = new Vector3(1.2f, 0.7f, 0);
+    Vector3 dleft = new Vector3(-1.2f, 0.6f, 0);
+    Vector3 dright = new Vector3(1.2f, 0.6f, 0);
 
     enum State {start, leftDir, rightDir};
     State state = State.start;
@@ -134,6 +137,8 @@ public class GameManager : MonoBehaviour
 
         if (isRight[player.playerLoc] != isStepRight) {
             Debug.Log("Wrong");
+            LeftButton.SetActive(false);
+            RightButton.SetActive(false);
             GameOver();
             return;
         }
@@ -155,7 +160,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver() {
         // gameover animation
-        // anim[0].SetBool("GameOver", true);
+        anim.SetBool("GameOver", true);
         // player.anim.SetBool("Die", true);
 
         // Change UI
@@ -167,7 +172,7 @@ public class GameManager : MonoBehaviour
         // if (vibrationOn) Vibration();
         // dslManager.SaveMoney(player.money);
 
-        CancelInvoke("Timer");
+        CancelInvoke();
         Invoke("GameOverScene", 2f);
     }
 
@@ -193,7 +198,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("RightButton clicked");
                 Step(true);
                 break;
-            case "NewGameButton":
+            case "RestartButton":
                 Debug.Log("RestartButton clicked");
                 break;
             case "PauseButton":
@@ -210,6 +215,18 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Unknown Button "+btn.name);
                 break;
         }
+    }
+
+    public void BtnDown(GameObject btn) {
+        btn.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+    }
+
+    public void BtnUp(GameObject btn) {
+        btn.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    public void LoadScene(int i) {
+        SceneManager.LoadScene(i);
     }
 
     ////////////////////Players////////////////////
