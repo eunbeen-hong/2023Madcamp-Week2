@@ -90,11 +90,11 @@ public class Stairs : MonoBehaviour
 
     }
 
-    void StairMove(int stairIndex, bool playerMove) { // 플레이어가 오른쪽으로 움직임 -> playerMove = true
+    void StairMove(bool stepRight) { // 플레이어가 오른쪽으로 움직임 -> stepRight = true
         // if (player.isDead) return;
 
         // Move stairs to the right or left
-        Vector3 offset = playerMove ? (-dright) : (-dleft);
+        Vector3 offset = stepRight ? (-dright) : (-dleft);
         for (int i = 0; i < 20; i++) {
             stairs[i].transform.position += offset;
         }
