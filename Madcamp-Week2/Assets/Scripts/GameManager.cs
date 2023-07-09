@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject[] players, stairs, UI;
     public GameObject LeftButton, RightButton;
-    public GameObject pauseButton, ResumeButton, RestartButton;
+    public GameObject PauseButton, ResumeButton, RestartButton;
     public GameObject background;
     
     public Animator anim;
@@ -137,8 +137,7 @@ public class GameManager : MonoBehaviour
 
         if (isRight[player.playerLoc] != isStepRight) {
             Debug.Log("Wrong");
-            LeftButton.SetActive(false);
-            RightButton.SetActive(false);
+            setControlBtn(false);
             GameOver();
             return;
         }
@@ -161,11 +160,12 @@ public class GameManager : MonoBehaviour
     void GameOver() {
         // gameover animation
         anim.SetBool("GameOver", true);
-        // player.anim.SetBool("Die", true);
+        player.anim.SetBool("Die", true);
 
         // Change UI
         ScoreBoard();
-        pauseButton.SetActive(false);
+        PauseButton.SetActive(false);
+        setControlBtn(false);
 
         player.isDead = true;
         // player.MoveAnimation();
@@ -174,6 +174,11 @@ public class GameManager : MonoBehaviour
 
         CancelInvoke();
         Invoke("GameOverScene", 2f);
+    }
+
+    private void setControlBtn(bool isOn) {
+        LeftButton.SetActive(isOn);
+        RightButton.SetActive(isOn);
     }
 
     void ScoreBoard() {
@@ -192,11 +197,11 @@ public class GameManager : MonoBehaviour
         switch (btn.name) {
             case "LeftButton":
                 Debug.Log("LeftButton clicked");
-                Step(false);
+                // Step(false);
                 break;
             case "RightButton":
                 Debug.Log("RightButton clicked");
-                Step(true);
+                // Step(true);
                 break;
             case "RestartButton":
                 Debug.Log("RestartButton clicked");
@@ -204,10 +209,14 @@ public class GameManager : MonoBehaviour
             case "PauseButton":
                 Debug.Log("PauseButton clicked");
                 CancelInvoke();
+                PauseButton.SetActive(false);
+                ResumeButton.SetActive(true);
                 gamePaused = true;
                 break;
             case "ResumeButton":
                 Debug.Log("ResumeButton clicked");
+                PauseButton.SetActive(true);
+                ResumeButton.SetActive(false);
                 Timer();
                 gamePaused = false;
                 break;
@@ -219,6 +228,17 @@ public class GameManager : MonoBehaviour
 
     public void BtnDown(GameObject btn) {
         btn.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        
+        switch (btn.name) {
+            case "LeftButton":
+                Debug.Log("LeftButton clicked");
+                Step(false);
+                break;
+            case "RightButton":
+                Debug.Log("RightButton clicked");
+                Step(true);
+                break;
+        }
     }
 
     public void BtnUp(GameObject btn) {
