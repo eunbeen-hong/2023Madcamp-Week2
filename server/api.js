@@ -148,6 +148,7 @@ async function updateBestScoreByName(name, newScore, dbName, collectionName) {
     }
 }
 
+
 // sort by bestScore
 async function sortByBestScore(dbName, collectionName) {
     const client = new MongoClient(url, {
@@ -171,12 +172,15 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
+export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName, sortByBestScore }
+
 // test
 var dbName = "RankDB";
 var collectionName = "users";
 
 // getAll(dbName, collectionName);
 // console.log("\n");
+
 
 sortByBestScore(dbName, collectionName);
 console.log("\n");
