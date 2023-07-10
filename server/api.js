@@ -1,12 +1,10 @@
+const getSecret = require("./getSecret");
+
 const { MongoClient } = require("mongodb");
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-const path = require("path");
-const fs = require("fs");
-const filePath = path.join(__dirname, "secret", "url.json");
-const jsonData = fs.readFileSync(filePath, "utf-8");
-const data = JSON.parse(jsonData);
+data = getSecret("url.json");
 const url = data.db;
 
 // db.collection을 배열로 다 불러옴
@@ -171,7 +169,7 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
-export {
+module.exports = {
     getAll,
     getOneByName,
     insertOne,
