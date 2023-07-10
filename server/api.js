@@ -148,11 +148,37 @@ async function updateBestScoreByName(name, newScore, dbName, collectionName) {
     }
 }
 
+// sort by bestScore
+async function sortByBestScore(dbName, collectionName) {
+    const client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+    const sort = { bestScore: -1 }; // -1 for descending order, 1 for ascending
+
+    try {
+        await client.connect();
+        const db = client.db(dbName);
+        const collection = db.collection(collectionName);
+
+        const data = await collection.find({}).sort(sort).toArray();
+
+        console.log(data);
+    } catch (error) {
+        console.error("MongoDB 연결 중 오류 발생:", error);
+    } finally {
+        await client.close();
+    }
+}
+
 // test
 var dbName = "RankDB";
 var collectionName = "users";
 
-getAll(dbName, collectionName);
+// getAll(dbName, collectionName);
+// console.log("\n");
+
+sortByBestScore(dbName, collectionName);
 console.log("\n");
 
 // setTimeout(function() {
@@ -166,7 +192,7 @@ console.log("\n");
 // }, 3000);
 
 // setTimeout(function() {
-//   getOneByName("John", dbName, collectionName);
+//   getOneByName("John", dbName, collectionName);`
 //   console.log("\n");
 // }, 4000);
 
