@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
 
     public bool timerOn = false, gamePaused = false;
-    float timerSpeed = 0.0025f;
+    float timerSpeed = 0.005f;
     int score;
     // int selectedIndex = 0;
 
@@ -267,13 +267,14 @@ public class GameManager : MonoBehaviour
     ////////////////////Timer////////////////////
     private void Timer() {
         if (timerOn){
-            if (score > 30) timerSpeed = 0.0033f;
-            if (score > 60) timerSpeed = 0.0037f;
-            if (score > 100) timerSpeed = 0.0043f;
-            if (score > 150) timerSpeed = 0.005f;
-            if (score > 200) timerSpeed = 1.005f;
-            if (score > 300) timerSpeed = 1.0065f;
-            if (score > 400) timerSpeed = 1.0075f;
+            if (score > 30) timerSpeed = 0.0055f;
+            if (score > 60) timerSpeed = 0.006f;
+            if (score > 100) timerSpeed = 0.0065f;
+            if (score > 150) timerSpeed = 0.007f;
+            if (score > 200) timerSpeed = 0.008f;
+            if (score > 300) timerSpeed = 0.01f;
+            if (score > 400) timerSpeed = 0.015f;
+            if (score > 600) timerSpeed += 0.0001f;
 
             timer.fillAmount -= timerSpeed;
         }

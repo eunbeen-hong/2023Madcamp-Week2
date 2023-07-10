@@ -120,14 +120,14 @@ async function updateBestScoreByName(name, newScore, dbName, collectionName) {
 }
 
 
-
+export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName }
 
 // test
 var dbName = "RankDB";
 var collectionName = "users";
 
-getAll(dbName, collectionName);
-console.log("\n");
+// getAll(dbName, collectionName);
+// console.log("\n");
 
 // setTimeout(function() {
 //   insertOne("John", "pic3", 400, dbName, collectionName);
