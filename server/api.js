@@ -2,7 +2,12 @@ const { MongoClient } = require('mongodb');
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-const url = '///';
+const path = require('path');
+const fs = require('fs');
+const filePath = path.join(__dirname, 'secret', 'url.json');
+const jsonData = fs.readFileSync(filePath, 'utf-8');
+const data = JSON.parse(jsonData);
+const url = data.db;
 
 // db.collection을 배열로 다 불러옴
 async function getAll(dbName, collectionName) {
@@ -124,10 +129,10 @@ var collectionName = "users";
 getAll(dbName, collectionName);
 console.log("\n");
 
-setTimeout(function() {
-  insertOne("John", "pic3", 400, dbName, collectionName);
-  console.log("\n");
-}, 2000); 
+// setTimeout(function() {
+//   insertOne("John", "pic3", 400, dbName, collectionName);
+//   console.log("\n");
+// }, 2000); 
 
 // setTimeout(function() {
 //   updateBestScoreByName("John", 500, dbName, collectionName);
