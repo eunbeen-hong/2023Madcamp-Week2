@@ -173,23 +173,16 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
-<<<<<<< HEAD
-// export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName, sortByBestScore }
-=======
->>>>>>> origin/main
+
+
 module.exports = {
     getAll,
     getOneByName,
     insertOne,
     deleteOneByName,
     updateBestScoreByName,
-<<<<<<< HEAD
     sortByBestScore
 }
-=======
-    sortByBestScore,
-};
->>>>>>> origin/main
 
 // test
 var dbName = "RankDB";
