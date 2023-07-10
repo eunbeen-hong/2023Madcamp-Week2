@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 
 // Connection URL and database name
-const url = 'mongodb+srv://eunsu:11112222@newcluster.w0npkmm.mongodb.net/?retryWrites=true&w=majority';
+const url = '///';
 const dbName = 'Ranking Server';
 
 // Collection names

@@ -1,6 +1,6 @@
 const express = require('express'); // express 임포트
 
-const server_url = 'mongodb+srv://eunsu:11112222@newcluster.w0npkmm.mongodb.net/?retryWrites=true&w=majority'
+const server_url = '///'
 const app = express(); // app생성
 const port = 3030;
 

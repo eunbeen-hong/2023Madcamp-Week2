@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-const url = 'mongodb+srv://eunsu:11112222@newcluster.w0npkmm.mongodb.net/?retryWrites=true&w=majority';
+const url = '///';
 
 // db.collection을 배열로 다 불러옴
 async function getAll(dbName, collectionName) {
