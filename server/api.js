@@ -9,26 +9,28 @@ const jsonData = fs.readFileSync(filePath, "utf-8");
 const data = JSON.parse(jsonData);
 const url = data.db;
 
+
 // db.collection을 배열로 다 불러옴
 async function getAll(dbName, collectionName) {
     const client = new MongoClient(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
+    let dataArr = {};
     try {
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
 
         const data = await collection.find({}).toArray();
-
         console.log(data);
+        dataArr = JSON.stringify(data);
     } catch (error) {
         console.error("MongoDB 연결 중 오류 발생:", error);
     } finally {
         await client.close();
     }
+    return dataArr;
 }
 
 // db.collection에서 "username"이 target인 객체를 불러옴
@@ -37,7 +39,7 @@ async function getOneByName(target, dbName, collectionName) {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
+    var data = {};
     try {
         await client.connect();
         const db = client.db(dbName);
@@ -47,6 +49,7 @@ async function getOneByName(target, dbName, collectionName) {
 
         if (result) {
             console.log("일치하는 객체:", result);
+            data = JSON.stringify(result);
         } else {
             console.log("일치하는 객체를 찾을 수 없습니다.");
         }
@@ -55,6 +58,7 @@ async function getOneByName(target, dbName, collectionName) {
     } finally {
         await client.close();
     }
+    return data;
 }
 
 // obj를 db.collection에 추가
@@ -172,7 +176,15 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
-export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName, sortByBestScore }
+// export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName, sortByBestScore }
+module.exports = {
+    getAll,
+    getOneByName,
+    insertOne,
+    deleteOneByName,
+    updateBestScoreByName,
+    sortByBestScore
+}
 
 // test
 var dbName = "RankDB";
