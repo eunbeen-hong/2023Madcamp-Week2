@@ -17,7 +17,7 @@ console.log(`ip: ${ip.address()}.`)
 const mongoose = require('mongoose');
 mongoose
   .connect(
-    'mongodb+srv://eunsu:11112222@newcluster.w0npkmm.mongodb.net/?retryWrites=true&w=majority',
+    '///',
     {
       // useNewUrlPaser: true,
       // useUnifiedTofology: true,
