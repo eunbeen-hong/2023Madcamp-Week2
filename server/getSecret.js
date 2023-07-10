@@ -8,4 +8,4 @@ function getSecret(filename) {
     return data;
 }
 
-module.exports = getSecret;
+module.exports = {getSecret};

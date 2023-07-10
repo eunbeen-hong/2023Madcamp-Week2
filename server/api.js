@@ -1,10 +1,10 @@
-const getSecret = require("./getSecret");
+const getSecret = require("./getSecret.js");
 
 const { MongoClient } = require("mongodb");
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-data = getSecret("url.json");
+data = getSecret.getSecret("url.json");
 const url = data.db;
 
 

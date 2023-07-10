@@ -1,10 +1,11 @@
 // import { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName } from './api.js'
 const api = require("./api.js")
+const gs = require("./getSecret");
 const dbName = "RankDB";
 const collectionName = "users";
 
-const data = getSecret("client_secret.json");
-const server_url = data.db;
+// const data = gs.getSecret("client_secret.json");
+// const server_url = data.db;
 
 const express = require("express"); // express 임포트
 const app = express(); // app생성
