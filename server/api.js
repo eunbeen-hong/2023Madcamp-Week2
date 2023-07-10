@@ -1,12 +1,10 @@
+const getSecret = require("./getSecret");
+
 const { MongoClient } = require("mongodb");
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-const path = require("path");
-const fs = require("fs");
-const filePath = path.join(__dirname, "secret", "url.json");
-const jsonData = fs.readFileSync(filePath, "utf-8");
-const data = JSON.parse(jsonData);
+data = getSecret("url.json");
 const url = data.db;
 
 
@@ -152,7 +150,6 @@ async function updateBestScoreByName(name, newScore, dbName, collectionName) {
     }
 }
 
-
 // sort by bestScore
 async function sortByBestScore(dbName, collectionName) {
     const client = new MongoClient(url, {
@@ -176,15 +173,23 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
+<<<<<<< HEAD
 // export { getAll, getOneByName, insertOne, deleteOneByName, updateBestScoreByName, sortByBestScore }
+=======
+>>>>>>> origin/main
 module.exports = {
     getAll,
     getOneByName,
     insertOne,
     deleteOneByName,
     updateBestScoreByName,
+<<<<<<< HEAD
     sortByBestScore
 }
+=======
+    sortByBestScore,
+};
+>>>>>>> origin/main
 
 // test
 var dbName = "RankDB";
@@ -192,7 +197,6 @@ var collectionName = "users";
 
 // getAll(dbName, collectionName);
 // console.log("\n");
-
 
 sortByBestScore(dbName, collectionName);
 console.log("\n");
