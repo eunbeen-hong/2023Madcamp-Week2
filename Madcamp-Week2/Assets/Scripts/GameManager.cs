@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] players, stairs, UI;
     public GameObject LeftButton, RightButton;
     public GameObject PauseButton, ResumeButton, RestartButton;
-    public GameObject background;
+    public GameObject background, playerParent;
     
     public Animator anim;
     public Image timer;
@@ -150,8 +150,7 @@ public class GameManager : MonoBehaviour
         // ResetTimer();
         background.transform.position += background.transform.position.y < -14f ?
             new Vector3(0, 4.7f, 0) : new Vector3(0, -0.05f, 0);
-
-    }    
+    }
     
     bool state2bool(State st) {
         return st == State.rightDir;
@@ -197,11 +196,9 @@ public class GameManager : MonoBehaviour
         switch (btn.name) {
             case "LeftButton":
                 Debug.Log("LeftButton clicked");
-                // Step(false);
                 break;
             case "RightButton":
                 Debug.Log("RightButton clicked");
-                // Step(true);
                 break;
             case "RestartButton":
                 Debug.Log("RestartButton clicked");
@@ -226,16 +223,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayerStepAnim(GameObject btn) {
+        if (btn.name == "RightButton" && isFacingLeft(playerParent)) {
+            playerParent.transform.rotation = Quaternion.Euler(0, 180, 0);
+            Debug.Log(playerParent.transform.rotation);
+        } else if (btn.name == "LeftButton" && !isFacingLeft(playerParent)) {
+            playerParent.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Debug.Log(playerParent.transform.rotation);
+        }
+        player.anim.SetBool("Step", true);
+        yield return new WaitForSeconds(0.2f);
+        player.anim.SetBool("Step", false);
+    }
+
     public void BtnDown(GameObject btn) {
         btn.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         
         switch (btn.name) {
             case "LeftButton":
                 Debug.Log("LeftButton clicked");
+                StartCoroutine(PlayerStepAnim(btn));
                 Step(false);
                 break;
             case "RightButton":
                 Debug.Log("RightButton clicked");
+                StartCoroutine(PlayerStepAnim(btn));
                 Step(true);
                 break;
         }
@@ -291,5 +303,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.4f);
         }
         GameOver();
+    }
+
+    private bool isFacingLeft(GameObject playerParent) {
+        return playerParent.transform.rotation == Quaternion.Euler(0, 0, 0);
     }
 }
