@@ -18,6 +18,8 @@ public class Ranking : MonoBehaviour
     
     public UrlObject URL;
     _User[] rankings = new _User[80];
+
+    int length = 0;
     
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -59,7 +61,7 @@ public class Ranking : MonoBehaviour
         
             Debug.LogFormat("GetAll Result:\n");
 
-            Array.Sort(res, (x, y) => x.bestScore.CompareTo(y.bestScore));
+            Array.Sort(res, (x, y) => y.bestScore.CompareTo(x.bestScore));
 
             int i = 0;
             foreach (_User user in res)
@@ -74,10 +76,32 @@ public class Ranking : MonoBehaviour
                 rankings[i].bestScore = user.bestScore;
                 rankings[i].univ = user.univ;
                 i++;      
+                length++;
             }
         }));
 
         
+        Invoke("dododo", 2);
+        // string firstSchoolName = SchoolNameConverter(rankings[0].univ);
+        // string secondSchoolName = SchoolNameConverter(rankings[1].univ);
+        // string thirdSchoolName = SchoolNameConverter(rankings[2].univ);
+
+        // // string firstSchoolName = SchoolNameConverter("GIST");
+        // // string secondSchoolName = SchoolNameConverter("한양대학교");
+        // // string thirdSchoolName = SchoolNameConverter("KAIST");
+
+        // Transform firstSchool = transform.Find("First");
+        // Transform secondSchool = transform.Find("Second");
+        // Transform thirdSchool = transform.Find("Third");
+        
+        // SetPlayerActive(firstSchool, rankings[0].univ);
+        // SetPlayerActive(secondSchool, secondSchoolName);
+        // SetPlayerActive(thirdSchool, thirdSchoolName);
+
+        // LoadRanking();
+    }
+
+    void dododo() {
         string firstSchoolName = SchoolNameConverter(rankings[0].univ);
         string secondSchoolName = SchoolNameConverter(rankings[1].univ);
         string thirdSchoolName = SchoolNameConverter(rankings[2].univ);
@@ -91,10 +115,14 @@ public class Ranking : MonoBehaviour
         Transform thirdSchool = transform.Find("Third");
         
         SetPlayerActive(firstSchool, rankings[0].univ);
-        SetPlayerActive(secondSchool, secondSchoolName);
-        SetPlayerActive(thirdSchool, thirdSchoolName);
+        SetPlayerActive(secondSchool, rankings[1].univ);
+        SetPlayerActive(thirdSchool, rankings[2].univ);
 
         LoadRanking();
+    }
+
+    void Update() {
+
     }
 
     private void SetPlayerActive(Transform parentTransform, string school) {
@@ -120,17 +148,17 @@ public class Ranking : MonoBehaviour
         switch (SchoolName) {
             case "GIST":
                 return "gistPlayer";
-            case "한양대학교":
+            case "한양대":
                 return "hanPlayer";
             case "KAIST":
                 return "kaPlayer";
-            case "고려대학교":
+            case "고려대":
                 return "koPlayer";
-            case "성균관대학교":
+            case "성균관대":
                 return "sungPlayer";
-            case "숙명여자대학교":
+            case "숙명여대":
                 return "sukPlayer";
-            case "POSTHECH":
+            case "POSTECH":
                 return "poPlayer";
             case "Default1":
                 return "Default1";
@@ -141,7 +169,7 @@ public class Ranking : MonoBehaviour
 
     public void LoadRanking() {
         GameObject playerPrefab = Resources.Load<GameObject>("PlayerItem");
-        for (int i = 3; i<80; i++) {
+        for (int i = 3; i<length; i++) {
             _User user = rankings[i];
             GameObject newItem = Instantiate(playerPrefab);
             newItem.transform.GetChild(0).GetComponent<TMP_Text>().text = (i + 1).ToString();

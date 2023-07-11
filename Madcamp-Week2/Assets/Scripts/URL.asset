@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2cf7eb5eb7ebb48a4a260f1d508cdf, type: 3}
   m_Name: URL
   m_EditorClassIdentifier: 
-  url: 
+  host: https://8e79-192-249-19-234.ngrok-free.app
   urlGetRank: 
-  urlPostById: 
-  urlUpdateScore: 
+  urlPostById: /user/id
+  urlUpdateScore: /user/update/score
