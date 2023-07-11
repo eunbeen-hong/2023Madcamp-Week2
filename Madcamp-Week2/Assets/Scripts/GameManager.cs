@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] players, stairs, UI;
     public GameObject LeftButton, RightButton;
     public GameObject PauseButton, ResumeButton, RestartButton;
-    public GameObject background, playerParent;
+    public GameObject background;
+    GameObject playerParent;
     
     public Animator anim;
     public Image timer;
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool timerOn = false, gamePaused = false;
     float timerSpeed = 0.005f;
     int score;
-    // int selectedIndex = 0;
+    public int playerIdx = 0;
 
 
     public bool[] isRight = new bool[20];
@@ -42,8 +43,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Start() {
-        // players[selectedIndex].SetActive(true);
-        // player = players[selectedIndex].GetComponent<Player>();
+        players[playerIdx].SetActive(true);
+        player = players[playerIdx].GetComponent<Player>();
+        playerParent = player.transform.parent.gameObject;
+        playerParent.SetActive(true);
 
         StairInit();
         Timer();
@@ -223,7 +226,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayerStepAnim(GameObject btn) {
+    private void PlayerStepAnim(GameObject btn) {
         if (btn.name == "RightButton" && isFacingLeft(playerParent)) {
             playerParent.transform.rotation = Quaternion.Euler(0, 180, 0);
             Debug.Log(playerParent.transform.rotation);
@@ -231,9 +234,6 @@ public class GameManager : MonoBehaviour
             playerParent.transform.rotation = Quaternion.Euler(0, 0, 0);
             Debug.Log(playerParent.transform.rotation);
         }
-        player.anim.SetBool("Step", true);
-        yield return new WaitForSeconds(0.2f);
-        player.anim.SetBool("Step", false);
     }
 
     public void BtnDown(GameObject btn) {
@@ -242,12 +242,14 @@ public class GameManager : MonoBehaviour
         switch (btn.name) {
             case "LeftButton":
                 Debug.Log("LeftButton clicked");
-                StartCoroutine(PlayerStepAnim(btn));
+                // StartCoroutine(PlayerStepAnim(btn));
+                PlayerStepAnim(btn);
                 Step(false);
                 break;
             case "RightButton":
                 Debug.Log("RightButton clicked");
-                StartCoroutine(PlayerStepAnim(btn));
+                // StartCoroutine(PlayerStepAnim(btn));
+                PlayerStepAnim(btn);
                 Step(true);
                 break;
         }
@@ -263,7 +265,6 @@ public class GameManager : MonoBehaviour
 
     ////////////////////Players////////////////////
     public void Step(bool isStepRight) {
-
         // anim.SetBool("facingRight", isStepRight); // change sprite accordingly
 
         if (isAdmin) {
