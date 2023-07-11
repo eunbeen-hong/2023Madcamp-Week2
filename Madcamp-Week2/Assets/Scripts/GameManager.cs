@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Newtonsoft.Json;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
     public bool isAdmin = false;
 
     public UserScriptObject userObj;
+
+    public UrlObject URL;
 
     void Awake() {
         // 여기서 userObj 처리? (DB에서 받아오기?)
@@ -206,6 +209,23 @@ public class GameManager : MonoBehaviour
         if (score > userObj.bestScore) {
             userObj.bestScore = score;
             bestScoreText.text = score.ToString();
+
+            var url = string.Format("{0}/{1}", URL.host, URL.urlUpdateScore);
+            Debug.Log(url);
+
+            var req = new Protocols.Packets.req_UpdateUser();
+            req.id = userObj.id;
+            req.bestScore = score;
+            var json = JsonConvert.SerializeObject(req);
+            Debug.Log(json);
+
+            StartCoroutine(RankMain.UpdateScore(url, json, (raw) => {
+                // var res = JsonConvert.DeserializeObject<Protocols.Packets.res>(raw);
+                Debug.LogFormat("UPDATED {0} -> {1}", req.id, req.bestScore);
+
+            }));
+
+
         } else {
             bestScoreText.text = userObj.bestScore.ToString();
         }
