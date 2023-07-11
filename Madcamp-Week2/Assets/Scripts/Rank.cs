@@ -80,6 +80,7 @@ public class RankMain : MonoBehaviour
     public static IEnumerator GetRank(string url, System.Action<string> callback)
     {
         var webRequest = new UnityWebRequest(url, "GET");
+        Debug.Log(url);
 
         webRequest.downloadHandler = new DownloadHandlerBuffer();
 

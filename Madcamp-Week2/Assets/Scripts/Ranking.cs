@@ -18,6 +18,7 @@ public class Ranking : MonoBehaviour
     
     public UrlObject URL;
     _User[] rankings = new _User[80];
+
     int length = 0;
     
     void Awake() {
@@ -39,7 +40,7 @@ public class Ranking : MonoBehaviour
         
             Debug.LogFormat("GetAll Result:\n");
 
-            Array.Sort(res, (x, y) => x.bestScore.CompareTo(y.bestScore));
+            Array.Sort(res, (x, y) => y.bestScore.CompareTo(x.bestScore));
 
             int i = 0;
             foreach (_User user in res)
@@ -53,6 +54,7 @@ public class Ranking : MonoBehaviour
                 rankings[i].id = user.id;
                 rankings[i].bestScore = user.bestScore;
                 rankings[i].univ = user.univ;
+
                 i++; length++; 
             }
         }));
@@ -79,6 +81,10 @@ public class Ranking : MonoBehaviour
         SetPlayerActive(thirdSchool, rankings[2].univ);
 
         LoadRanking();
+    }
+
+    void Update() {
+
     }
 
     private void SetPlayerActive(Transform parentTransform, string school) {
@@ -115,7 +121,6 @@ public class Ranking : MonoBehaviour
                 return "sungPlayer";
             case "숙명여대":
                 return "sukPlayer";
-            case "포스텍":
             case "POSTECH":
                 return "poPlayer";
             case "Default1":
@@ -128,6 +133,7 @@ public class Ranking : MonoBehaviour
     public void LoadRanking() {
         GameObject playerPrefab = Resources.Load<GameObject>("PlayerItem");
         for (int i = 0; i<length; i++) {
+
             _User user = rankings[i];
             GameObject newItem = Instantiate(playerPrefab);
             newItem.transform.GetChild(0).GetComponent<TMP_Text>().text = (i + 1).ToString();
