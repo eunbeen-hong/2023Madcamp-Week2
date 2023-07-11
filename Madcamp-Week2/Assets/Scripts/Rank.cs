@@ -6,17 +6,12 @@ using Newtonsoft.Json;
 using UnityEngine.Networking;
 using System.Text;
 
-using Newtonsoft.Json;
 
 public class RankMain : MonoBehaviour
 {
-    public string host;
-
-    public string urlGetRank;
-    public string urlPostById;
-    public string urlUpdateScore;
-
     public UserScriptObject scriptableObject;
+
+    public UrlObject URL;
 
     public Button btnGetRank;
     public Button btnPostById;
@@ -26,10 +21,10 @@ public class RankMain : MonoBehaviour
     {
         this.btnGetRank.onClick.AddListener(() => {
             // var url = string.Format("{0}:{1}/{2}", host, port, urlGetAll);
-            var url = string.Format("{0}/{1}", host, urlGetRank);
+            var url = string.Format("{0}/{1}", URL.host, URL.urlGetRank);
             Debug.Log(url);
 
-            StartCoroutine(this.GetRank(url, (raw) =>
+            StartCoroutine(RankMain.GetRank(url, (raw) =>
             {
                 User[] res = JsonConvert.DeserializeObject<User[]>(raw);
                 
@@ -45,7 +40,7 @@ public class RankMain : MonoBehaviour
 
         this.btnPostById.onClick.AddListener(() => {
             // var url = string.Format("{0}:{1}/{2}", host, port, urlGetScore);
-            var url = string.Format("{0}/{1}", host, urlPostById);
+            var url = string.Format("{0}/{1}", URL.host, URL.urlPostById);
             Debug.Log(url);
 
             var req = new Protocols.Packets.req_PostById();
@@ -53,7 +48,7 @@ public class RankMain : MonoBehaviour
             var json = JsonConvert.SerializeObject(req);
             Debug.Log(json);
 
-            StartCoroutine(this.GetScore(url, json, (raw) =>
+            StartCoroutine(RankMain.PostScoreById(url, json, (raw) =>
             {
                 User res = JsonConvert.DeserializeObject<User>(raw);
                 Debug.LogFormat("Post Result: {0} : {1}", res.username, res.bestScore);
@@ -62,7 +57,7 @@ public class RankMain : MonoBehaviour
 
         this.btnUpdateScore.onClick.AddListener(() => {
             // var url = string.Format("{0}:{1}/{2}", host, port, urlUpdateScore);
-            var url = string.Format("{0}/{1}", host, urlUpdateScore);
+            var url = string.Format("{0}/{1}", URL.host, URL.urlUpdateScore);
             Debug.Log(url);
 
             var req = new Protocols.Packets.req_UpdateUser();
@@ -71,9 +66,9 @@ public class RankMain : MonoBehaviour
             var json = JsonConvert.SerializeObject(req);
             Debug.Log(json);
 
-            StartCoroutine(this.UpdateScore(url, json, (raw) => {
+            StartCoroutine(RankMain.UpdateScore(url, json, (raw) => {
                 // var res = JsonConvert.DeserializeObject<Protocols.Packets.res>(raw);
-                Debug.LogFormat("UPDATED {0} -> {1}", req.username, req.bestScore);
+                Debug.LogFormat("UPDATED {0} -> {1}", req.id, req.bestScore);
 
             }));
         });
@@ -81,7 +76,7 @@ public class RankMain : MonoBehaviour
 
 
 
-    private IEnumerator GetRank(string url, System.Action<string> callback)
+    public static IEnumerator GetRank(string url, System.Action<string> callback)
     {
         var webRequest = new UnityWebRequest(url, "GET");
 
@@ -99,7 +94,7 @@ public class RankMain : MonoBehaviour
         }
     }
     
-    private IEnumerator PostScoreById(string url, string json, System.Action<string> callback) {
+    public static IEnumerator PostScoreById(string url, string json, System.Action<string> callback) {
         var webRequest = new UnityWebRequest(url, "POST");
         var bodyRaw = Encoding.UTF8.GetBytes(json);
 
@@ -119,7 +114,7 @@ public class RankMain : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateScore(string url, string json, System.Action<string> callback)
+    public static IEnumerator UpdateScore(string url, string json, System.Action<string> callback)
     {
         var webRequest = new UnityWebRequest(url, "POST");
         var bodyRaw = Encoding.UTF8.GetBytes(json);
