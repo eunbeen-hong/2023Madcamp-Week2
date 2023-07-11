@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
         currentScoreText.text = score.ToString();
         timer.fillAmount += 0.7f ;
         // ResetTimer();
-        background.transform.position += background.transform.position.y < -14f ?
+        background.transform.position += background.transform.position.y < -13f ?
             new Vector3(0, 4.7f, 0) : new Vector3(0, -0.05f, 0);
     }
     
