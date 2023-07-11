@@ -84,6 +84,7 @@ public class Ranking : MonoBehaviour
         LoadRanking();
         } catch (Exception _) { // NullReferenceException
             Debug.Log("현재 랭킹탭에 접근할 수 없습니다.");
+            Debug.Log(_);
         }
     }
 
