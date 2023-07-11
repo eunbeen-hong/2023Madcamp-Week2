@@ -26,10 +26,10 @@ public class RankMain : MonoBehaviour
 
             StartCoroutine(RankMain.GetRank(url, (raw) =>
             {
-                User[] res = JsonConvert.DeserializeObject<User[]>(raw);
+                _User[] res = JsonConvert.DeserializeObject<_User[]>(raw);
                 
                 Debug.LogFormat("GetAll Result:\n");
-                foreach (User user in res)
+                foreach (_User user in res)
                 {
                     Debug.LogFormat("{0} : {1}", user.username, user.bestScore);
                 }
@@ -50,7 +50,7 @@ public class RankMain : MonoBehaviour
 
             StartCoroutine(RankMain.PostScoreById(url, json, (raw) =>
             {
-                User res = JsonConvert.DeserializeObject<User>(raw);
+                _User res = JsonConvert.DeserializeObject<_User>(raw);
                 Debug.LogFormat("Post Result: {0} : {1}", res.username, res.bestScore);
             }));
         });
