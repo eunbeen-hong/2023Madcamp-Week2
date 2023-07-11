@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: URL
   m_EditorClassIdentifier: 
   host: https://8e79-192-249-19-234.ngrok-free.app
-  urlGetRank: 
-  urlPostById: /user/id
-  urlUpdateScore: /user/update/score
+  urlGetRank: ' '
+  urlPostById: user/id
+  urlUpdateScore: user/update/score
