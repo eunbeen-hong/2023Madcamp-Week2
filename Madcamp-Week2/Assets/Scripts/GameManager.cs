@@ -38,8 +38,10 @@ public class GameManager : MonoBehaviour
     // Admin
     public bool isAdmin = false;
 
-    void Awake() {
+    public UserScriptObject userObj;
 
+    void Awake() {
+        // 여기서 userObj 처리? (DB에서 받아오기?)
     }
 
     void Start() {
@@ -174,7 +176,7 @@ public class GameManager : MonoBehaviour
         // if (vibrationOn) Vibration();
         // dslManager.SaveMoney(player.money);
 
-        CancelInvoke();
+        // CancelInvoke();
         Invoke("GameOverScene", 2f);
     }
 
@@ -185,9 +187,14 @@ public class GameManager : MonoBehaviour
 
     void ScoreBoard() {
         finalScoreText.text = score.ToString();
-        // bestScoreText.text = bestScore.ToString(); // from server
 
         // if highest score, record
+        if (score > userObj.bestScore) {
+            userObj.bestScore = score;
+            bestScoreText.text = score.ToString();
+        } else {
+            bestScoreText.text = userObj.bestScore.ToString();
+        }
     }
 
     void GameOverScene() {
