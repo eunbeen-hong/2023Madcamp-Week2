@@ -1,11 +1,12 @@
-const getSecret = require("./getSecret");
+const getSecret = require("./getSecret.js");
 
 const { MongoClient } = require("mongodb");
 
 // MongoDB 서버 URL
 // 이거 허용된 ip에서만 실행해야 함
-data = getSecret("url.json");
+data = getSecret.getSecret("url.json");
 const url = data.db;
+
 
 // db.collection을 배열로 다 불러옴
 async function getAll(dbName, collectionName) {
@@ -13,20 +14,21 @@ async function getAll(dbName, collectionName) {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
+    let dataArr = {};
     try {
         await client.connect();
         const db = client.db(dbName);
         const collection = db.collection(collectionName);
 
         const data = await collection.find({}).toArray();
-
         console.log(data);
+        dataArr = JSON.stringify(data);
     } catch (error) {
         console.error("MongoDB 연결 중 오류 발생:", error);
     } finally {
         await client.close();
     }
+    return dataArr;
 }
 
 // db.collection에서 "username"이 target인 객체를 불러옴
@@ -35,7 +37,7 @@ async function getOneByName(target, dbName, collectionName) {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
-
+    var data = {};
     try {
         await client.connect();
         const db = client.db(dbName);
@@ -45,6 +47,7 @@ async function getOneByName(target, dbName, collectionName) {
 
         if (result) {
             console.log("일치하는 객체:", result);
+            data = JSON.stringify(result);
         } else {
             console.log("일치하는 객체를 찾을 수 없습니다.");
         }
@@ -53,6 +56,7 @@ async function getOneByName(target, dbName, collectionName) {
     } finally {
         await client.close();
     }
+    return data;
 }
 
 // obj를 db.collection에 추가
@@ -169,14 +173,16 @@ async function sortByBestScore(dbName, collectionName) {
     }
 }
 
+
+
 module.exports = {
     getAll,
     getOneByName,
     insertOne,
     deleteOneByName,
     updateBestScoreByName,
-    sortByBestScore,
-};
+    sortByBestScore
+}
 
 // test
 var dbName = "RankDB";
