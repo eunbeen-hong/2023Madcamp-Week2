@@ -58,11 +58,11 @@ public class Ranking : MonoBehaviour
             }
         }));
 
-
         Invoke("showRank", 2);
     }
 
     void showRank () {
+        try {
         myBest.GetComponent<TMP_Text>().text = userObj.bestScore.ToString();
 
         string firstSchoolName = SchoolNameConverter(rankings[0].univ);
@@ -82,6 +82,9 @@ public class Ranking : MonoBehaviour
         SetPlayerActive(thirdSchool, rankings[2].univ);
 
         LoadRanking();
+        } catch (Exception _) { // NullReferenceException
+            Debug.Log("현재 랭킹탭에 접근할 수 없습니다.");
+        }
     }
 
     void Update() {
