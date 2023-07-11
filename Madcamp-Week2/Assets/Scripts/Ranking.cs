@@ -11,11 +11,12 @@ public class Ranking : MonoBehaviour
     GameManager gameManager;
     public GameObject First, Second, Third;
     public Animator anim;
-    public GameObject rankingView;
+    public GameObject rankingView, myBest;
     private SpriteRenderer spriteRenderer;
 
     private string[] SchoolNames = {"Others", "GIST", "한양대학교", "KAIST", "고려대학교", "성균관대학교", "숙명여자대학교", "POSTHECH"};
     
+    public UserScriptObject userObj;
     public UrlObject URL;
     _User[] rankings = new _User[80];
 
@@ -28,8 +29,6 @@ public class Ranking : MonoBehaviour
 
     void Start() {
         rankingView = GameObject.Find("Content");
-      
-
 
         var url = string.Format("{0}/{1}", URL.host, URL.urlGetRank);
         Debug.Log(url);
@@ -64,6 +63,8 @@ public class Ranking : MonoBehaviour
     }
 
     void showRank () {
+        myBest.GetComponent<TMP_Text>().text = userObj.bestScore.ToString();
+
         string firstSchoolName = SchoolNameConverter(rankings[0].univ);
         string secondSchoolName = SchoolNameConverter(rankings[1].univ);
         string thirdSchoolName = SchoolNameConverter(rankings[2].univ);
@@ -112,7 +113,6 @@ public class Ranking : MonoBehaviour
                 return "gistPlayer";
             case "한양대":
                 return "hanPlayer";
-            case "카이스트":
             case "KAIST":
                 return "kaPlayer";
             case "고려대":
