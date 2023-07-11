@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: 4213fd643405bcc4fbf5f54b036a2e7f
+guid: 9990fc37b2c932a4dabdaa7195b4679b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - scriptableObject: {fileID: 11400000, guid: 1f0714a0971210344897127397a63d3e, type: 2}
+  - user: {fileID: 11400000, guid: 1f0714a0971210344897127397a63d3e, type: 2}
   - URL: {fileID: 11400000, guid: 544debb142d61d345bc8bb66eddfd6f7, type: 2}
-  - btnGetRank: {instanceID: 0}
-  - btnPostById: {instanceID: 0}
-  - btnUpdateScore: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
