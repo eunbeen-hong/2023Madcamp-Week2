@@ -3,7 +3,20 @@ guid: 191532f4aeef9434ea39576b208fbb3c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LeftButton: {instanceID: 0}
+  - RightButton: {instanceID: 0}
+  - PauseButton: {instanceID: 0}
+  - ResumeButton: {instanceID: 0}
+  - RestartButton: {instanceID: 0}
+  - background: {instanceID: 0}
+  - anim: {instanceID: 0}
+  - timer: {instanceID: 0}
+  - finalScoreText: {instanceID: 0}
+  - bestScoreText: {instanceID: 0}
+  - currentScoreText: {instanceID: 0}
+  - player: {instanceID: 0}
+  - userObj: {fileID: 11400000, guid: 1f0714a0971210344897127397a63d3e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
