@@ -9,7 +9,7 @@ public class Ranking : MonoBehaviour
     GameManager gameManager;
     public GameObject First, Second, Third;
     public Animator anim;
-    public GameObject rankingPannel;
+    public GameObject rankingView;
     private SpriteRenderer spriteRenderer;
 
     private string[] SchoolNames = {"Others", "GIST", "한양대학교", "KAIST", "고려대학교", "성균관대학교", "숙명여자대학교", "POSTHECH"};
@@ -22,7 +22,7 @@ public class Ranking : MonoBehaviour
     }
 
     void Start() {
-        rankingPannel = GameObject.Find("RankingList");
+        rankingView = GameObject.Find("Content");
         
         // get ranking from server
 
@@ -59,26 +59,30 @@ public class Ranking : MonoBehaviour
         Transform secondSchool = transform.Find("Second");
         Transform thirdSchool = transform.Find("Third");
         
-        SetPlayerActive(firstSchool, firstSchoolName);
+        SetPlayerActive(firstSchool, rankings[0].univ);
         SetPlayerActive(secondSchool, secondSchoolName);
         SetPlayerActive(thirdSchool, thirdSchoolName);
 
         LoadRanking();
     }
 
-    private void SetPlayerActive(Transform parentTransform, string targetPlayerName) {
+    private void SetPlayerActive(Transform parentTransform, string school) {
+        string targetSchoolName = SchoolNameConverter(school);
         if (parentTransform != null) {
             for (int i = 0; i< parentTransform.childCount; i++) {
                 Transform currentChild = parentTransform.GetChild(i);
 
-                if (currentChild.name == targetPlayerName) {
+                if (currentChild.name == targetSchoolName) {
                     currentChild.gameObject.SetActive(true);
                     break;
+                } else if (currentChild.name == "SchoolName") {
+                    currentChild.GetComponent<TMP_Text>().text = school;
                 }
             }
         } else {
             Debug.Log("parentTransform is null");
         }
+
     }
 
     private string SchoolNameConverter(string SchoolName) {
@@ -97,20 +101,24 @@ public class Ranking : MonoBehaviour
                 return "sukPlayer";
             case "POSTHECH":
                 return "poPlayer";
-            default:
+            case "Default1":
                 return "Default1";
+            default:
+                return SchoolName;
         }
     }
 
     public void LoadRanking() {
         GameObject playerPrefab = Resources.Load<GameObject>("PlayerItem");
-        foreach (_User user in rankings) {
+        for (int i = 3; i<80; i++) {
+            _User user = rankings[i];
             GameObject newItem = Instantiate(playerPrefab);
-            newItem.transform.GetChild(0).GetComponent<TMP_Text>().text = user.univ;
-            newItem.transform.GetChild(1).GetComponent<TMP_Text>().text = user.username;
-            newItem.transform.GetChild(2).GetComponent<TMP_Text>().text = user.bestScore.ToString();
+            newItem.transform.GetChild(0).GetComponent<TMP_Text>().text = (i + 1).ToString();
+            newItem.transform.GetChild(1).GetComponent<TMP_Text>().text = user.univ;
+            newItem.transform.GetChild(2).GetComponent<TMP_Text>().text = user.username;
+            newItem.transform.GetChild(3).GetComponent<TMP_Text>().text = user.bestScore.ToString();
 
-            newItem.transform.SetParent(rankingPannel.transform, false);
+            newItem.transform.SetParent(rankingView.transform, false);
             newItem.transform.localScale = Vector2.one;
         }
     }
