@@ -49,7 +49,7 @@ public class RankMain : MonoBehaviour
             var json = JsonConvert.SerializeObject(req);
             Debug.Log(json);
 
-            StartCoroutine(RankMain.PostById(url, json, (raw) =>
+            StartCoroutine(RankMain.PostScoreById(url, json, (raw) =>
             {
                 _User res = JsonConvert.DeserializeObject<_User>(raw);
                 Debug.LogFormat("Post Result: {0} : {1}", res.username, res.bestScore);
@@ -96,7 +96,7 @@ public class RankMain : MonoBehaviour
         }
     }
     
-    public static IEnumerator PostById(string url, string json, System.Action<string> callback) {
+    public static IEnumerator PostScoreById(string url, string json, System.Action<string> callback) {
         var webRequest = new UnityWebRequest(url, "POST");
         var bodyRaw = Encoding.UTF8.GetBytes(json);
 

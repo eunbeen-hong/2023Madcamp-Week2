@@ -19,7 +19,7 @@ public class PassHandler : MonoBehaviour
         var json = JsonConvert.SerializeObject(req);
         Debug.Log(json);
 
-        StartCoroutine(RankMain.PostById(url, json, (raw) =>
+        StartCoroutine(RankMain.PostScoreById(url, json, (raw) =>
         {
             _User res = JsonConvert.DeserializeObject<_User>(raw);
             Debug.LogFormat("Post Result: {0} : {1}", res.username, res.bestScore);
