@@ -31,5 +31,10 @@ public class PassHandler : MonoBehaviour
         }));
     }
 
+    // Host부터 보내고 Unity 시작할 것
+    public void PassHost(string host) {
+        URL.host = host;
+    }
+
     
 }
