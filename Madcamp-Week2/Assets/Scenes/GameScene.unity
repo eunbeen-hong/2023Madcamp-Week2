@@ -659,7 +659,7 @@ MonoBehaviour:
   Third: {fileID: 1523333878}
   anim: {fileID: 0}
   rankingView: {fileID: 0}
-  URL: {fileID: 0}
+  URL: {fileID: 11400000, guid: 544debb142d61d345bc8bb66eddfd6f7, type: 2}
 --- !u!1 &113195045
 GameObject:
   m_ObjectHideFlags: 0
