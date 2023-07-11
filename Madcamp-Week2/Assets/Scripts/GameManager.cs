@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start() {
+        playerIdx = SchoolNameToIdx(userObj.univ);
         players[playerIdx].SetActive(true);
         player = players[playerIdx].GetComponent<Player>();
         playerParent = player.transform.parent.gameObject;
@@ -53,6 +54,19 @@ public class GameManager : MonoBehaviour
         StairInit();
         Timer();
         StartCoroutine("CheckTimer");
+    }
+
+    int SchoolNameToIdx(string SchoolName) {
+        switch (SchoolName) {
+            case "GIST": return 1;
+            case "한양대": return 2;
+            case "KAIST": return 3;
+            case "고려대": return 4;
+            case "성균관대": return 5;
+            case "숙명여대": return 6;
+            case "POSTECH": return 7;
+            default: return 0;
+        }
     }
 
     // 시작 화면 관련(화면 전환, 로그인 버튼 등)
