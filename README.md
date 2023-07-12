@@ -64,8 +64,7 @@ APK는 [여기](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFRl5Bn
  - 오른쪽 상단에서 게임을 잠시 멈추고 다시 실행할 수 있습니다.
  - 캐릭터가 죽으면 비명소리와 함께 캐릭터의 sprite가 변경됩니다.
 
-
-<img width="30%" alt="game0" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/80893578-78f9-47d3-821f-4f3770fb4b63">
+<img width="30%" alt="game0" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/128043904/5619e341-4c13-4861-8e93-23e81f491bbe">
 <img width="30%" alt="game1" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/28e22bff-e9b1-4373-bfcf-07a0c9327042">
 <img width="30%" alt="home2" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/58b012db-7ee5-4ca9-8709-c61f4babd0f8">
 
