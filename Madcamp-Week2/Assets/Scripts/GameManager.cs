@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject PauseButton, ResumeButton, RestartButton;
     public GameObject background;
     public Screaming screaming;
-    GameObject playerParent;
+    public GameObject playerParent;
     
     public Animator anim;
     public Image timer;
