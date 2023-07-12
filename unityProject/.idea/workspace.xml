@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19b68088-af16-441b-afd6-897e418a3854" name="Changes" comment="" />
+    <list default="true" id="19b68088-af16-441b-afd6-897e418a3854" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launcher/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/launcher/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launcher/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/launcher/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launcher/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/launcher/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityLibrary/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/unityLibrary/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/Managed/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/Managed/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/boot.config" beforeDir="false" afterPath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/boot.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/data.unity3d" beforeDir="false" afterPath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/data.unity3d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/unity_app_guid" beforeDir="false" afterPath="$PROJECT_DIR$/unityLibrary/src/main/assets/bin/Data/unity_app_guid" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +35,36 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="unityProject" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2SR02eITJCzqf3Y4XZRqW7MVqcD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,9 +74,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true"
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/HongEunbeen/Desktop/export",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HongEunbeen\Desktop\madcamp\week2\2023Madcamp-Week2\unityProject\launcher\src\main\res\values" />
+      <recent name="C:\Users\HongEunbeen\Desktop\madcamp\week2\2023Madcamp-Week2\unityProject\launcher\src\main\res\layout" />
+      <recent name="C:\Users\HongEunbeen\Desktop\madcamp\week2\2023Madcamp-Week2\unityProject\launcher\src\main\res\drawable" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="launcher" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="unityProject.launcher.main" />
