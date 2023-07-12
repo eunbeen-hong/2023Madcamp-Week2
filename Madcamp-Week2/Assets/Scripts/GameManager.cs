@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject LeftButton, RightButton;
     public GameObject PauseButton, ResumeButton, RestartButton;
     public GameObject background;
+    public Screaming screaming;
     GameObject playerParent;
     
     public Animator anim;
@@ -182,6 +183,9 @@ public class GameManager : MonoBehaviour
         // gameover animation
         anim.SetBool("GameOver", true);
         player.anim.SetBool("Die", true);
+
+        //screaming
+        screaming.PlayAudio();
 
         // Change UI
         ScoreBoard();
