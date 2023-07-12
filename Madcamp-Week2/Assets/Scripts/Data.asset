@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0000
   username: DEFAULT
-  univ: KAIST
+  univ: "\uAE30\uD0C0"
   bestScore: 0
