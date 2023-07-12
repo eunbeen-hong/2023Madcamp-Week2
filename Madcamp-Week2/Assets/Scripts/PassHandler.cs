@@ -15,7 +15,7 @@ public class PassHandler : MonoBehaviour
         Debug.Log(url);
 
         var req = new Protocols.Packets.req_PostById();
-        req.id = user.id;
+        req.id = id;
         var json = JsonConvert.SerializeObject(req);
         Debug.Log(json);
 
@@ -24,7 +24,7 @@ public class PassHandler : MonoBehaviour
             _User res = JsonConvert.DeserializeObject<_User>(raw);
             Debug.LogFormat("Post Result: {0} : {1}", res.username, res.bestScore);
 
-            user.id = res.id;
+            user.id = id;
             user.username = res.username;
             user.univ = res.univ;
             user.bestScore = res.bestScore;
@@ -34,6 +34,7 @@ public class PassHandler : MonoBehaviour
     // Host부터 보내고 Unity 시작할 것
     public void PassHost(string host) {
         URL.host = host;
+        Debug.LogFormat("Host passed: {0}", host);
     }
 
     
