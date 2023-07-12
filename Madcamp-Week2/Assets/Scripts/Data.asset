@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d9ddc2d98025d41811235e829a9bf9, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  id: 2905628394
-  username: "\uAE40\uC740\uC218"
+  id: 0000
+  username: DEFAULT
   univ: KAIST
   bestScore: 0
