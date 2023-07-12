@@ -37,6 +37,7 @@ APK는 [여기](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFRl5Bn
 ### 카카오 로그인 & 배포
 *Android Studio*
 
+---
 
 ## 소개 (Introduction)
 <img width="10%" alt="IMG_2487" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/daecbc1c-c984-43f6-a010-dd8357c25496">
