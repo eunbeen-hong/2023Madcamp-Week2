@@ -59,10 +59,25 @@ async function getOneByName(target, dbName, collectionName) {
     return data;
 }
 
+// db.collection에서 id를 받고 그 id의 username을 리턴, 없으면 null 리턴
+async function postOneById(id, dbName, collectionName) {
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+  
+    const user = await collection.findOne({ id: id });
+    
+    console.log("일치하는 객체:", user);
+    client.close();
+  
+    return user ? JSON.stringify(user) : null;
+  }
+
 // obj를 db.collection에 추가
 async function insertOne(
+    id,
     username,
-    profilePic,
+    univ,
     bestScore,
     dbName,
     collectionName
@@ -78,8 +93,9 @@ async function insertOne(
         const collection = db.collection(collectionName);
 
         var obj = {
+            id: id,
             username: username,
-            profilePic: profilePic,
+            univ: univ,
             bestScore: bestScore,
         };
 
@@ -150,6 +166,34 @@ async function updateBestScoreByName(name, newScore, dbName, collectionName) {
     }
 }
 
+// id의 bestScore를 newScore로 업데이트
+async function updateBestScoreById(id, newScore, dbName, collectionName) {
+    const client = new MongoClient(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+
+    try {
+        await client.connect();
+        const db = client.db(dbName);
+        const collection = db.collection(collectionName);
+
+        const result = await collection.findOne({ id: id });
+
+        if (result) {
+            result.bestScore = newScore;
+            await collection.replaceOne({ _id: result._id }, result);
+            console.log("객체 업데이트 완료:", result);
+        } else {
+            console.log("일치하는 객체를 찾을 수 없습니다.");
+        }
+    } catch (error) {
+        console.error("MongoDB 연결 중 오류 발생:", error);
+    } finally {
+        await client.close();
+    }
+}
+
 // sort by bestScore
 async function sortByBestScore(dbName, collectionName) {
     const client = new MongoClient(url, {
@@ -181,7 +225,9 @@ module.exports = {
     insertOne,
     deleteOneByName,
     updateBestScoreByName,
-    sortByBestScore
+    updateBestScoreById,
+    sortByBestScore,
+    postOneById
 }
 
 // test

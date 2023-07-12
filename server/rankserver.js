@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.get('/', async function (req, res) {
   let a = await api.getAll(dbName, collectionName);
   res.send(a);
+  console.log('\n');
 });
 
 // GET: /user/score
@@ -26,30 +27,34 @@ app.get('/user/score', async function (req, res) {
   const { username } = req.body;
   var a = await api.getOneByName(username, dbName, collectionName);
   res.send(JSON.parse(a).bestScore.toString());
+  console.log('\n');
+});
+
+// POST: /user/id
+app.post('/user/id', async function (req, res) {
+  const { id } = req.body;
+  var a = await api.postOneById(id, dbName, collectionName);
+  res.send(a);
+  console.log('\n');
 });
 
 // POST: /user/insert
 app.post('/user/insert', (req, res) => {
-  const { username, profilePic, bestScore } = req.body;
-  api.insertOne(username, profilePic, parseInt(bestScore), dbName, collectionName);
-  res.send(`INSERT USER: ${username}`);
+  const { id, username, univ, bestScore } = req.body;
+  api.insertOne(id, username, univ, parseInt(bestScore), dbName, collectionName);
+  let pack = {id: id}
+  res.send(JSON.stringify(pack));
   console.log('\n');
 });
 
-// POST: /user/update/score
+// POST: /user/update/score (By Id)
 app.post('/user/update/score', (req, res) => {
-  const { username, bestScore } = req.body;
-  api.updateBestScoreByName(username, parseInt(bestScore), dbName, collectionName);
-  res.send(`UPDATE SCORE: ${username} -> ${parseInt(bestScore)}`);
+  const { id, bestScore } = req.body;
+  api.updateBestScoreById(id, parseInt(bestScore), dbName, collectionName);
+  res.send(`UPDATE SCORE: ${id} -> ${parseInt(bestScore)}`);
   console.log('\n');
 });
 
 
-// POST: /user/update/profilePic
-// app.post('/user/update/profilePic', (req, res) => {
-//   const { username, profilePic } = req.body;
-//   // TODO
-// console.log('\n');
-// });
 
 app.listen(port, () => console.log(`${port}포트입니다.`));
