@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
     public bool[] isRight = new bool[20];
     Vector3 prevStairPos;
     Vector3 startPos = new Vector3(0, -4.5f, 0);
-    Vector3 dleft = new Vector3(-1.2f, 0.6f, 0);
-    Vector3 dright = new Vector3(1.2f, 0.6f, 0);
+    Vector3 dleft = new Vector3(-1.2f, 0.8f, 0);
+    Vector3 dright = new Vector3(1.2f, 0.8f, 0);
 
     enum State {start, leftDir, rightDir};
     State state = State.start;
 
     // Admin
-    public bool isAdmin = false;
+    public bool buttonAdmin = false, timerAdmin = false;
 
     public UserScriptObject userObj;
 
@@ -191,7 +191,6 @@ public class GameManager : MonoBehaviour
         player.isDead = true;
         // player.MoveAnimation();
         // if (vibrationOn) Vibration();
-        // dslManager.SaveMoney(player.money);
 
         // CancelInvoke();
         Invoke("GameOverScene", 2f);
@@ -246,6 +245,9 @@ public class GameManager : MonoBehaviour
                 break;
             case "RestartButton":
                 Debug.Log("RestartButton clicked");
+                LoadScene(0);
+                UI[0].SetActive(true); // inGameUI
+                UI[2].SetActive(false); // homeUI
                 break;
             case "PauseButton":
                 Debug.Log("PauseButton clicked");
@@ -308,7 +310,7 @@ public class GameManager : MonoBehaviour
     public void Step(bool isStepRight) {
         // anim.SetBool("facingRight", isStepRight); // change sprite accordingly
 
-        if (isAdmin) {
+        if (buttonAdmin) {
             isStepRight = isRight[player.playerLoc];
         }
 
@@ -344,7 +346,8 @@ public class GameManager : MonoBehaviour
         while (timer.fillAmount > 0) {
             yield return new WaitForSeconds(0.4f);
         }
-        GameOver();
+        if (timerAdmin == false)
+            GameOver();
     }
 
     private bool isFacingLeft(GameObject playerParent) {
