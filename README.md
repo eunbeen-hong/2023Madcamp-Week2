@@ -21,9 +21,9 @@ APK는 [여기](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFRl5Bn
 [![](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 
-Unity Game: Madcamp-Week2
-Server: server
-android studio (exported unity project): final
+Unity Game: Madcamp-Week2\
+Server: server\
+android studio (exported unity project): final\
 release APK: apkforder
 
 ### 게임
