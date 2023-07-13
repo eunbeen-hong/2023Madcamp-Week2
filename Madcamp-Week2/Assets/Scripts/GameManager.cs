@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject[] players, stairs, UI;
     public GameObject LeftButton, RightButton;
-    public GameObject PauseButton, ResumeButton, RestartButton;
+    public GameObject PauseButton, ResumeButton, RestartButton, StartButton, RankButton;
     public GameObject background;
     public Screaming screaming;
     public GameObject playerParent;
@@ -49,15 +49,26 @@ public class GameManager : MonoBehaviour
     }
 
     void Start() {
+        if (userObj.id == "0000") {
+            Invoke("UserInit", 2);    
+        } else {
+            UserInit();
+        }
+        
+
+        StairInit();
+        Timer();
+        StartCoroutine("CheckTimer");
+    }
+
+    void UserInit() {
         playerIdx = SchoolNameToIdx(userObj.univ);
         players[playerIdx].SetActive(true);
         player = players[playerIdx].GetComponent<Player>();
         playerParent = player.transform.parent.gameObject;
         playerParent.SetActive(true);
-
-        StairInit();
-        Timer();
-        StartCoroutine("CheckTimer");
+        StartButton.SetActive(true);
+        RankButton.SetActive(true);
     }
 
     int SchoolNameToIdx(string SchoolName) {
