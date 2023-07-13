@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">olaola</string>
+    <string name="kakao_app_key">3e3a173274b20868ef2ee94a5837c5bd</string>
+    <string name="server_url">https://f4e2-192-249-19-234.ngrok-free.app/</string>
+    <string-array name="univ_list">
+        <item>KAIST</item>
+        <item>고려대</item>
+        <item>GIST</item>
+        <item>한양대</item>
+        <item>성균관대</item>
+        <item>숙명여대</item>
+        <item>POSTECH</item>
+        <item>기타</item>
+    </string-array>
+</resources>
+
+    <!--<item>DGIST</item>-->
+    <!--<item>UNIST</item>-->
+    <!--<item>서울대</item>-->
+    <!--<item>연세대</item>-->
+    <!--<item>부산대</item>-->
+    <!--<item>영남대</item>-->
+    <!--<item>국방대</item>-->
+    <!--<item>이화여대</item>-->
+    <!--<item>전남대</item>-->
+    <!--<item>창원대</item>-->
+    <!--<item>충남대</item>-->
+    <!--<item>한예종</item>-->
+    <!--<item>부경대</item>-->
