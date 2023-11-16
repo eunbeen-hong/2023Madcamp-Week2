@@ -1,6 +1,7 @@
 # [몰입캠프 Week 2] - OlaOla (올라올라)
 
 APK는 [여기](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFRl5Bnc/view?usp=sharing)에서 다운로드 할 수 있습니다.
+
 Download APK [here](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFRl5Bnc/view?usp=sharing).
 
 <img width="50%" alt="IMG_2486" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/9555cd59-48cd-4627-bc2f-880399175d9f">
@@ -48,6 +49,7 @@ release APK: apkforder
 <img width="10%" alt="IMG_2487" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/daecbc1c-c984-43f6-a010-dd8357c25496">
 
 `올라올라`는 무한의 계단을 모티브로 만들어진 몰입캠프 대학 대항 게임입니다. 카카오 로그인으로 게임을 이용할 수 있으며 최초 가입시 선택한 대학으로 캐릭터가 결정됩니다. 랭킹탭에서 가입한 유저들의 순위를 확인할 수 있으며 1, 2, 3위는 대학 캐릭터와 함께 명예의 전당에 오르게 됩니다. 대학의 명예를 걸고 계단을 올라올라~
+
 `Ola-Ola` is a game to climb infinite stairs with against universities. You can sign up with Kakao account, and the character is determined by the university you chose when you first joined. You can check the ranking of users on the ranking tab, and first, second, and third places will be on the Hall of Fame with university mascots. Let's climb with the honor of the university~
 
 <img width="30%" alt="IMG_2487" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/46cfc998-9840-4342-a67f-14c6baee229f">
@@ -59,6 +61,7 @@ release APK: apkforder
  - 유저의 대학에 따라 캐릭터가 지정됩니다. 숙명여대, 한양대, 성균관대, 카이스트, 고려대, GIST, 포스텍은 대학의 마스코트가 캐릭터로 제공되고 이외의 대학은 기본 캐릭터로 플레이하게 됩니다.
  - 홈 화면에서는 랭킹탭과 게임화면에 접근할 수 있습니다.
  - 앱을 실행하면 배경음악을 들을 수 있습니다.
+   
  - Character is determined by the user's university. 7 universities' mascots are available and other university will be played with default character.
  - You can access ranking tab and game tab.
  - There will be background music.
@@ -73,6 +76,7 @@ release APK: apkforder
  - 상단의 타이머로 남은 시간을 확인할 수 있습니다. 타이머가 0에 도달할 때까지 계단을 오르지 않으면 게임이 오버됩니다.
  - 오른쪽 상단에서 게임을 잠시 멈추고 다시 실행할 수 있습니다.
  - 캐릭터가 죽으면 비명소리와 함께 캐릭터의 sprite가 변경됩니다.
+   
  - Choose right or left way to climb the stair.
  - Check the timer on the upper side of the screen. If you don't choose the action before the timer goes off, the game will be over.
  - You can pause and resume the game with the button on the top-right.
@@ -88,6 +92,7 @@ release APK: apkforder
  - 상단에서는 나의 최고 점수를 확인할 수 있으며, 홈버튼으로 홈화면으로 돌아갈 수 있습니다.
  - 1, 2, 3등은 대학 마스코트와 함께 명예의 전당에 오르게 됩니다.
  - Scroll view로 다른 모든 유저의 등수, 소속대학, 유저 이름과 최고점수를 확인할 수 있습니다.
+   
  - You can check every users' ranking, university, name and their best score with Scroll View.
  - My best score is on the top of the screen, and can go back to home with home button.
  - 1st, 2nd, and 3rd place will be on the Hall of Fame with the mascot of the university.
