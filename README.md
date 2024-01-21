@@ -10,7 +10,7 @@ Download APK [here](https://drive.google.com/file/d/10UJZOl9N5TSMK19nRUQgTM-5uFR
 
 ## 개발자 (Developers)
 
-- [홍은빈 Eunbeen (Eunice) Hong](https://github.com/pancakesontuesday), [김은수 Eunsu Kim](https://github.com/EunsuKim03)
+- [홍은빈 Eunbeen (Eunice) Hong](https://github.com/eunbeen-hong), [김은수 Eunsu Kim](https://github.com/EunsuKim03)
 <img width="13%" alt="IMG_2489" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/7fd0c146-0a92-4bad-9d2c-917ae8e03b26">
 <img width="10%" alt="IMG_2488" src="https://github.com/pancakesontuesday/2023Madcamp-Week2/assets/109589438/095d9439-0f6a-4703-b937-337ac28fae97">
 
